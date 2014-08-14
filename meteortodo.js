@@ -1,19 +1,13 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to meteortodo.";
-  };
+Todos = new Meteor.Collection('todos');
 
-  Template.hello.events({
-    'click input': function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
-}
+Session.setDefault('list_id', null);
+Session.setDefault('editing_listname', null);
+Session.setDefault('tag_filter', null);
+Session.setDefault('editing_itemname', null);
+Session.setDefault('editing_addtag', null);
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
-}
+Router.map(function() {
+  this.route('/', 
+    {path:'/',
+     })
+})
