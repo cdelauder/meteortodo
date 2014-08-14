@@ -10,7 +10,7 @@ Router.map(function () {
       var filename = this.params.filename;
 
       this.response.writeHead(200, {'Content-Type': 'JSON'});
-      this.response.end(EJSON.stringify(getAll()));
+      this.response.end(getAll());
     }
   });
   this.route('serverFile', {
@@ -28,7 +28,8 @@ Router.map(function () {
 });
 
 function getAll() {
-  return Todos.find({})
+  console.log(Todos.find({}, {fields: {title: 1, id: 1}}))
+  return JSON.stringify(Todos.find({}, {fields: {title: 1, id: 1}}))
 }
 
 function create() {
